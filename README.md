@@ -1,51 +1,130 @@
-# Wazuh-Implementation:
-  Implementation of a SIEM (Wazuh) for simulation of real world cybersecurity project .
+# Wazuh Implementation — Internship Cybersecurity Project
 
-Hello, I am Rayane, I was doing this work as 1 month internship project in @CMPE Maroc in ordre to try to enhance the entreprise security and upgrade my skills in this field .
+Implementation of a SIEM (Wazuh) to simulate a real-world cybersecurity monitoring environment.
 
-#Why I've done This and from where did this Idea Came from ?
-  First the idea came from my deep obssession of Cybersecurity and the desire of experiencing real world CyberProjects, so during the internship I was thinking 100% of a Cybersecurity project even if i do not have a solid background (I have a solid background in networking, Linux System Administration, and Coding which is i think not enough for pushing directly into those projects) but i'll do it because i know 100% i can do it, and next after lot of prijects spawned in my head i choosed something that is relatively basic and solid which is simulating a centralized SIEM environement using Wazuh as part of gaining learning and experience in cybersecurity, and I have discussed this with my manager who gave me the permission to do it and a big thank to him from here . 
+---
 
-#Introduction
-  During This internship I had done and learned lot of thing as not completing others even so I count it as a success .
-  I've Implemented Wazuh on My Machine( Ubuntu [24.04.2 LTS] ) and installed all dependencies (wazuh-manager, wazuh-indexer, wazuh-dashboard) in same machine, parsing logs received from a Watchguard Firewall, which was configured to send logs via Syslog PORT[514/UDP] to my local Syslog server for analysis. 
+## 👤 About Me
 
-!! All testing and configurations were performed on a separate machine under a controlled and safe conditions while respecting entreprise policies.
+Hello, I’m **Rayane**, and this project was developed during a **1-month internship** at **CMPE Maroc**. The main objective was to deepen my knowledge of cybersecurity by simulating a centralized SIEM solution while respecting all internal security policies and using only **isolated infrastructure** on my personal machine.
 
-#Tools Used
-  -Wazuh (Open Source SIEM and XDR)
-  -Syslog Server (For Sending/Receiving Logs)
-  -Watchguard Firewall (For Sending Logs)
-  -Ubuntu (My Machine)
-  -Wazuh decoders and Rules (XML)
-  -Bash + Linux tools (diagnosis and Error fixing)
+---
 
-#Steps Done During This Project
-  1-The first step is to Find a Powerfull,Free, and Open-source SIEM which after lot of searching and recommendations I found one named Wazuh .
-  2-Installing it while following the official installation documentation from Wazuh:
-  [https://documentation.wazuh.com/current/installation-guide/index.html], i've faced a lot of bugs in this phase see more in [##Challenges Faced and what i've learned] section .
-  3-Asking my Manager to allow watchguard to send logs via Syslog into my local Syslog server, and configuring it to parse those logs into a file named [watchguard.log] in [/var/log] directory .
-  4-This Step is where i had the most time in it which was implementing decoders for those logs so it wazuh can extract data from those raw logs and read them, also writting rules so Wazuh knows where to raise alerts and what to do if a rule matched see more in [##Challenges Faced and what i've learned] .
+## 💡 Project Motivation
 
+This project came from my deep interest in cybersecurity and my desire to gain **hands-on experience** with real-world tools and challenges. Although my formal background is in **networking, Linux system administration, and coding**, I was determined to take a leap into cybersecurity, despite not having direct experience in the field.
 
-#Challenges Faced and what i've learned
-  1-During installation process: 
-    I uninstalled and reinstalled Wazuh more than 7 times or more !! .
-    and that because of various problem during this phase, everytime a problem appears sometimes from configuration errors, or from installation process itself some packages may be broken, and also some essential files were not installed many times and that because of what i've concluded:
-      -No good internet connection while installation process .
-      -when uninstalling wazuh, I didn't remove all the related files that they were not removed by removing the program of even when executing the [purge] command that delete apps with their config files .
-      -Ip Address was changing in very short times which is not a good thing for implementing a SIEM solution for a server that have a variable IP address .
-  2-Decoders, and Regex patterns:
-    -it wasn't hard to write regex for logs at all, it was very easy .
-    the problem was that Wazuh decoders doesnt accept, support all regex patterns the thing that i realized too late and take mo so much time, and that's because all the regex I write was correct and when I test Them in Various regex Websites they works and extract the data correctly, but when I implement those regex patterns in Wazuh decoders, Boom!, so many syntax errors, and why this has taken me so much time because even AI has failed to find the problem (Which was with wazuh decoders supported syntax for regex) the thing that may seem so easy to find, but for me and considering that is a new experience it was very hard, and I spent lot of times with AI figuring the problem (ChatGPT, Gemini Pro, Copilot) and those all have failed to find the problem which later i've figured it by myself by analysing and playing with regex syntax .
-  3-I passed more than 15 days just figuring out how the regex patterns are working in Wazuh decoders and passed lot of times trying to fix the errors with AI but no results, until I relied on my self even with i dont have any background in it, and yeah i've found it, I found a lot of regex patterns that are not supported by wazuh decoders . 
-  3- A low end laptop which was crashin lot of times .
-  4- Not Enough Time to complete the desired project .
+After brainstorming different project ideas, I decided to simulate the implementation of a **SIEM system** using **Wazuh**, an open-source security platform. This was discussed with and approved by my internship manager, to whom I extend my sincere thanks for the support and trust.
 
-#What did I Benefit and Learned
-  -First real world project experience that has Cybersecurity background .
-  -Learned Installing wazuh and working with it, also how to debug related problems .
-  -Writting regex patterns, decoders and rules .
-  -Analyse Logs .
-  -Enhanced my Problem Solving Skills .
-  -Perseverance
+---
+
+## 🧩 Project Overview
+
+I deployed a Wazuh SIEM stack on **Ubuntu 24.04.2 LTS**, including:
+- `wazuh-manager`
+- `wazuh-indexer`
+- `wazuh-dashboard`
+
+I then configured my machine to act as a **syslog server**, receiving logs from a **WatchGuard firewall** via **UDP port 514**, storing them in `/var/log/watchguard.log`.
+
+⚠️ **Note:** All testing and configurations were performed on a separate machine under controlled and isolated conditions. No production environments were impacted.
+
+---
+
+## 🛠️ Tools & Technologies Used
+
+- **Wazuh** — Open-source SIEM & XDR
+- **Syslog (UDP/TCP 514)** — Log transport protocol
+- **WatchGuard Firewall** — Log source (simulated input)
+- **Ubuntu Server 24.04.2 LTS** — Host system
+- **Wazuh Decoders & Rules** (XML) — Custom written for log parsing and alerting
+- **Regex** — Used for pattern matching in custom decoders
+- **Bash / Shell** — Debugging, file manipulation
+- **Linux tools** (`journalctl`, `tail`, `netstat`, etc.) — Troubleshooting and monitoring
+
+---
+
+## 🔄 Project Workflow
+
+1. **Tool Research & Selection**
+   - Identified and chose **Wazuh** as a free, open-source, and powerful SIEM solution.
+
+2. **Wazuh Installation**
+   - Installed the full Wazuh stack by following the [official documentation](https://documentation.wazuh.com/current/installation-guide/index.html).
+   - Faced multiple errors, system crashes, and repeated re-installations during this phase (see "Challenges" below).
+
+3. **Syslog Configuration**
+   - Requested manager permission to forward logs from a WatchGuard firewall to my machine using **Syslog over port 514**.
+   - Configured the syslog service to save logs to `/var/log/watchguard.log`.
+
+4. **Decoder & Rule Creation**
+   - Developed **custom Wazuh decoders** to extract structured data from WatchGuard logs.
+   - Wrote **rules** to generate alerts based on the decoded logs.
+   - Spent significant time debugging Wazuh’s strict regex and decoder syntax.
+
+---
+
+## ⚠️ Challenges Faced
+
+### 🧩 Installation & Environment
+- Had to reinstall Wazuh over **7 times** due to broken packages, misconfigurations, and missing dependencies.
+- Problems included:
+  - Unstable internet during installation
+  - Incomplete cleanup between reinstallation attempts
+  - Changing IP addresses (not ideal for SIEM setup)
+
+### 🔍 Regex & Decoder Development
+- Creating regex for log parsing was not difficult in general — but Wazuh has **strict limitations** on supported regex patterns in XML decoders.
+- Most online regex testers (and AI tools) validated patterns as correct, but they failed within Wazuh.
+- Official documentation was insufficient for decoder syntax, leading to weeks of trial-and-error.
+- Even multiple AI tools (ChatGPT, Gemini Pro, Copilot) couldn’t fully resolve these issues.
+- Eventually, I succeeded by **manually analyzing patterns** and identifying unsupported syntax through experimentation.
+
+### 🖥️ Hardware Limitations
+- Used a low-end laptop that frequently crashed during installation and testing.
+
+### ⏳ Time Constraints
+- The internship was limited to one month, which restricted the project scope and prevented full completion of initial goals.
+
+---
+
+## ✅ Skills & Knowledge Gained
+
+- Installation, configuration, and debugging of Wazuh SIEM
+- Writing custom **regex patterns**, **decoders**, and **rules**
+- Troubleshooting complex Linux and networking issues
+- Working with **real-world, unstructured log data**
+- Improved problem-solving and **technical perseverance**
+- Learned to validate AI-generated solutions and rely on internal understanding when tools fail
+- Managed and executed a self-initiated project from planning to deployment
+
+---
+
+## ⛔ What I Didn’t Complete
+
+Although I reached my main goal, some planned tasks weren’t completed due to time and technical limitations:
+
+- ❌ **Windows Server Log Integration** — Initially planned but not implemented.
+- ❌ **Router Log Parsing** — Also planned, but not completed within the timeframe.
+- ❌ **Automation** — Tasks like decoder testing and deployment weren’t automated, but could be future improvements.
+
+---
+
+## 📈 Future Improvements
+
+If I had more time or resources, I would:
+- Add full log integration from Windows servers and routers
+- Build automation scripts for regex testing and decoder deployment
+- Use tools like **Logstash** or **Filebeat** to enrich log collection
+- Add dashboards and alert reports for clearer visualization
+
+---
+
+## 🙏 Final Words
+
+This was my **first real-world cybersecurity project**, and even though it was extremely challenging, I learned more in one month than in many months of traditional study. I now understand not just how to install a tool, but how to fight through broken installations, incorrect documentation, confusing errors, and regex nightmares — and still deliver results.
+
+I’d like to thank **CMPE Maroc** for their support and trust during this project.  
+I now look forward to building more advanced security projects and sharing them on this journey.
+
+> **_ Rayane **
