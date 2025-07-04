@@ -1,0 +1,28 @@
+<!-- Those are examples of some Logs  -->
+<!-- Logs sensitive data are hidden -->
+--------------------------------------------------------------------------------------------------------------------------------------------
+2025-06-23T13:18:10+01:00 Firewall-Example firewall: msg_id="3000-0148" Allow VOIP Firebox 61 udp 20 64 x.x.x.x x.x.x.x 37638 53 (Outgoing-00)
+
+2025-06-24T11:13:17+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny DATA Firebox 40 tcp 20 128 x.x.x.x x.x.x.x 389 53695 offset 5 R 3017982660 win 0 msg="tcp syn checking failed (expecting SYN packet for new TCP connection, but received ACK, FIN, or RST instead)." (Internal Policy)
+
+2025-06-24T11:11:59+01:00 Firewall-Example firewall: msg_id="3000-0148" Allow External Firebox 52 tcp 20 51 x.x.x.x x.x.x.x 46298 7403 offset 8 S 3749497871 win 65535 geo_src="NLD" (Outgoing-00)
+
+2025-06-24T11:11:57+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny DATA Firebox 40 tcp 20 128 x.x.x.x x.x.x.x 53389 443 offset 5 AF 986506661 win 64771 msg="tcp syn checking failed (expecting SYN packet for new TCP connection, but received ACK, FIN, or RST instead)." (Internal Policy)
+
+2025-06-25T09:08:15+01:00 Firewall-Example firewall: msg_id="3000-0148" Allow External Firebox 84 icmp 20 50 x.x.x.x x.x.x.x 8 0 id=4 seq=0 geo_src="USA" (Ping-00)
+
+2025-06-23T13:56:39+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny External DATA 66 udp 20 62 x.x.x.x x.x.x.x 65104 53 msg="ddos server quota" (Internal Policy)
+
+2025-06-25T13:12:39+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny DATA External 52 tcp 20 127 x.x.x.x x.x.x.x 57759 443 offset 8 S 1468324433 win 65535 geo_dst="USA" msg="ddos client quota" (Internal Policy)
+
+2025-06-24T11:44:36+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny External Firebox 44 tcp 20 240 x.x.x.x x.x.x.x 40829 6001 offset 6 S 3570005889 win 260 geo_src="BGR" msg="blocked ports" (Internal Policy)
+
+2025-06-24T11:30:20+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny DATA Firebox 52 tcp 20 128 x.x.x.x x.x.x.x 64883 80 offset 8 S 111772038 win 65535 msg="ip spoofing sites" (Internal Policy)
+
+2025-06-25T08:34:26+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny External Firebox 68 ipv6 20 242 x.x.x.x x.x.x.x geo_src="USA" (Unhandled External Packet-00)
+
+2025-06-25T09:16:55+01:00 Firewall-Example firewall: msg_id="3000-0148" Allow External Firebox 44 tcp 20 46 x.x.x.x x.x.x.x 57702 12621 offset 6 S 1150673918 win 4 geo_src="IND" (Outgoing-00)
+
+2025-06-24T13:09:50+01:00 Firewall-Example firewall: msg_id="3000-0148" Allow DATA Firebox 64 udp 20 64 x.x.x.x x.x.x.x 46973 53 (Outgoing-00)
+
+2025-06-24T12:05:31+01:00 Firewall-Example firewall: msg_id="3000-0148" Deny External Firebox 76 tcp 20 64 x.x.x.x x.x.x.x 56044 443 offset 8 A 55839947 win 19456 geo_dst="PRT" msg="tcp syn checking failed (expecting SYN packet for new TCP connection, but received ACK, FIN, or RST instead)." src_user="user.example@example-auth" (Internal Policy)
